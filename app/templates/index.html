@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Board Games App</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>I Miei Giochi da Tavolo</h1>
+    
+    <h2>Aggiungi un Gioco</h2>
+    <form method="POST" action="/add">
+        <input type="text" name="title" placeholder="Titolo" required>
+        <input type="text" name="genre" placeholder="Genere" required>
+        <input type="number" name="year" placeholder="Anno">
+        <input type="number" name="players" placeholder="Giocatori">
+        <button type="submit">Aggiungi</button>
+    </form>
+    
+    <h2>Elenco Giochi</h2>
+    <table>
+        <tr>
+            <th>Titolo</th>
+            <th>Genere</th>
+            <th>Anno</th>
+            <th>Giocatori</th>
+        </tr>
+        {% for game in games %}
+        <tr>
+            <td>{{ game.title }}</td>
+            <td>{{ game.genre }}</td>
+            <td>{{ game.year }}</td>
+            <td>{{ game.players }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
